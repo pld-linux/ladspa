@@ -2,7 +2,7 @@ Summary:	LADSPA SDK example plugins
 Summary(pl):	Przyk³adowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.12
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
@@ -10,6 +10,7 @@ Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
 Patch0:		%{name}-mkdirhier.patch
 URL:		http://www.ladspa.org/
 BuildRequires:	perl
+Requires:	%{name}-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,11 +32,24 @@ aplikacjami.
 
 Ten pakiet zawiera przyk³adowe wtyczki z LADSPA SDK.
 
+%package common
+Summary:	Common environment for LADSPA plugins
+Summary(pl):	¦rodowisko wspólne dla wtyczek LADSPA
+Group:		Libraries
+
+%description common
+Common environment for LADSPA plugins. Currently it contains only
+appropriate directory trees.
+
+%description common -l pl
+¦rodowisko wspólne dla wtyczek LADSPA. Aktualnie zawiera tylko
+odpowiednie drzewa katalogów.
+
 %package devel
 Summary:	Linux Audio Developer's Simple Plugin API
 Summary(pl):	Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
 Group:		Development/Libraries
-# doesn't require base
+# doesn't require base or common
 
 %description devel
 There is a large number of synthesis packages in use or development on
@@ -74,6 +88,7 @@ perl -pi -e "s!HREF=\"ladspa.h.txt\"!href=\"file:///usr/include/ladspa.h\"!" *.h
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_datadir}/ladspa/rdf
 
 %{__make} -C src install \
 	MKDIRHIER=/usr/lib/rpm/mkinstalldirs \
@@ -88,6 +103,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/ladspa/*.so
+
+%files common
+%defattr(644,root,root,755)
+%dir %{_libdir}/ladspa
+%dir %{_datadir}/ladspa
+%dir %{_datadir}/ladspa/rdf
 
 %files devel
 %defattr(644,root,root,755)
