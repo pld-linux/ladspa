@@ -34,7 +34,7 @@ Ten pakiet zawiera przyk³adowe wtyczki z LADSPA SDK.
 Summary:	Linux Audio Developer's Simple Plugin API
 Summary(pl):	Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+# doesn't require base
 
 %description devel
 There is a large number of synthesis packages in use or development on
