@@ -1,15 +1,15 @@
 Summary:	LADSPA SDK example plugins
+Summary(pl):	Przyk³adowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.12
 Release:	1
-Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
 License:	LGPL
 Group:		Libraries
-URL:		http://www.ladspa.org
+Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
+URL:		http://www.ladspa.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-
 There is a large number of synthesis packages in use or development on
 the Linux platform at this time. The Linux Audio Developer's Simple
 Plugin API (LADSPA) attempts to give programmers the ability to write
@@ -18,13 +18,23 @@ against a range of host applications.
 
 This package contains the example plugins from the LADSPA SDK.
 
+%description -l pl
+Istnieje wiele pakietów do syntezy u¿ywanych lub rozwijanych na
+platformie linuksowej. LADSPA (Linux Audio Developer's Simple Plugin
+API - proste API wtyczek dla programistów d¼wiêku pod Linuksem) to
+próba udostêpnienia programistom mo¿liwo¶ci pisania prostych "wtyczek"
+procesorów d¼wiêku w C/C++ i linkowania ich dynamicznie z wieloma
+aplikacjami.
+
+Ten pakiet zawiera przyk³adowe wtyczki z LADSPA SDK.
+
 %package devel
 Summary:	Linux Audio Developer's Simple Plugin API
-Group:		Libraries
+Summary(pl):	Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
+Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
-
 There is a large number of synthesis packages in use or development on
 the Linux platform at this time. The Linux Audio Developer's Simple
 Plugin API (LADSPA) attempts to give programmers the ability to write
@@ -35,12 +45,23 @@ Definitive technical documentation on LADSPA plugins for both the host
 and plugin is contained within copious comments within the ladspa.h
 header file.
 
+%description devel -l pl
+Istnieje wiele pakietów do syntezy u¿ywanych lub rozwijanych na
+platformie linuksowej. LADSPA (Linux Audio Developer's Simple Plugin
+API - proste API wtyczek dla programistów d¼wiêku pod Linuksem) to
+próba udostêpnienia programistom mo¿liwo¶ci pisania prostych "wtyczek"
+procesorów d¼wiêku w C/C++ i linkowania ich dynamicznie z wieloma
+aplikacjami.
+
+Techniczna dokumentacja do wtyczek LADSPA dotycz±ca zarówno samych
+wtyczek jak i korzystania z nich w programach znajduje siê w
+komentarzach pliku nag³ówkowego ladspa.h.
+
 %prep
 %setup -q -n %{name}_sdk
 cd doc
 #fix links to the header file in the docs
 perl -pi -e "s!HREF=\"ladspa.h.txt\"!href=\"file:///usr/include/ladspa.h\"!" *.html
-
 
 %build
 cd src
