@@ -7,6 +7,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
 URL:		http://www.ladspa.org/
+BuildRequires:	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,27 +65,27 @@ cd doc
 perl -pi -e "s!HREF=\"ladspa.h.txt\"!href=\"file:///usr/include/ladspa.h\"!" *.html
 
 %build
-cd src
-%{__make} targets
+%{__make} -C src targets \
+	CC="%{__cc}" CPP="%{__cxx}" \
+	CFLAGS="-I. -Wall -Werror %{rpmcflags} -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd src
-%{__make} install \
-    INSTALL_PLUGINS_DIR=$RPM_BUILD_ROOT%{_libdir}/ladspa \
-    INSTALL_INCLUDE_DIR=$RPM_BUILD_ROOT%{_includedir} \
-    INSTALL_BINARY_DIR=$RPM_BUILD_ROOT%{_bindir}
+
+%{__make} -C src install \
+	INSTALL_PLUGINS_DIR=$RPM_BUILD_ROOT%{_libdir}/ladspa \
+	INSTALL_INCLUDE_DIR=$RPM_BUILD_ROOT%{_includedir} \
+	INSTALL_BINARY_DIR=$RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/COPYING
 %attr(755,root,root)%{_libdir}/ladspa/*.so
 %attr(755,root,root)%{_bindir}/*
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/*.html doc/COPYING
+%doc doc/*.html
 %{_includedir}/ladspa.h
