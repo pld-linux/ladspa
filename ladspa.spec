@@ -27,7 +27,7 @@ Istnieje wiele pakietów do syntezy u¿ywanych lub rozwijanych na
 platformie linuksowej. LADSPA (Linux Audio Developer's Simple Plugin
 API - proste API wtyczek dla programistów d¼wiêku pod Linuksem) to
 próba udostêpnienia programistom mo¿liwo¶ci pisania prostych "wtyczek"
-procesorów d¼wiêku w C/C++ i linkowania ich dynamicznie z wieloma
+procesorów d¼wiêku w C/C++ i ich dynamicznej konsolidacji z wieloma
 aplikacjami.
 
 Ten pakiet zawiera przyk³adowe wtyczki z LADSPA SDK.
@@ -67,7 +67,7 @@ Istnieje wiele pakietów do syntezy u¿ywanych lub rozwijanych na
 platformie linuksowej. LADSPA (Linux Audio Developer's Simple Plugin
 API - proste API wtyczek dla programistów d¼wiêku pod Linuksem) to
 próba udostêpnienia programistom mo¿liwo¶ci pisania prostych "wtyczek"
-procesorów d¼wiêku w C/C++ i linkowania ich dynamicznie z wieloma
+procesorów d¼wiêku w C/C++ i ich dynamicznej konsolidacji z wieloma
 aplikacjami.
 
 Techniczna dokumentacja do wtyczek LADSPA dotycz±ca zarówno samych
