@@ -9,7 +9,7 @@ Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
 # Source0-md5:	dbd63dd701d80b152943073c84565c14
 Patch0:		%{name}-mkdirhier.patch
 URL:		http://www.ladspa.org/
-BuildRequires:	perl
+BuildRequires:	perl-base
 BuildRequires:	libstdc++-devel
 Requires:	%{name}-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
