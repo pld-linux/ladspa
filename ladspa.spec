@@ -2,10 +2,11 @@ Summary:	LADSPA SDK example plugins
 Summary(pl):	Przyk³adowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.12
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
+Patch0:		%{name}-mkdirhier.patch
 URL:		http://www.ladspa.org/
 BuildRequires:	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -60,6 +61,7 @@ komentarzach pliku nag³ówkowego ladspa.h.
 
 %prep
 %setup -q -n %{name}_sdk
+%patch0 -p1
 cd doc
 #fix links to the header file in the docs
 perl -pi -e "s!HREF=\"ladspa.h.txt\"!href=\"file:///usr/include/ladspa.h\"!" *.html
@@ -73,6 +75,7 @@ perl -pi -e "s!HREF=\"ladspa.h.txt\"!href=\"file:///usr/include/ladspa.h\"!" *.h
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C src install \
+	MKDIRHIER=/usr/lib/rpm/mkinstalldirs \
 	INSTALL_PLUGINS_DIR=$RPM_BUILD_ROOT%{_libdir}/ladspa \
 	INSTALL_INCLUDE_DIR=$RPM_BUILD_ROOT%{_includedir} \
 	INSTALL_BINARY_DIR=$RPM_BUILD_ROOT%{_bindir}
