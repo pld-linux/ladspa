@@ -1,0 +1,19 @@
+--- ladspa_sdk/src/makefile.wiget	Wed Feb  5 13:55:23 2003
++++ ladspa_sdk/src/makefile	Wed Feb  5 13:56:19 2003
+@@ -28,6 +28,7 @@
+ 			../bin/listplugins
+ CC		=	cc
+ CPP		=	c++
++MKDIRHIER = mkdirhier
+ 
+ ###############################################################################
+ #
+@@ -59,7 +60,7 @@
+ 	play /tmp/test.wav
+ 
+ install:	targets
+-	-mkdirhier	$(INSTALL_PLUGINS_DIR)				\
++	-$(MKDIRHIER)	$(INSTALL_PLUGINS_DIR)				\
+ 			$(INSTALL_INCLUDE_DIR)				\
+ 			$(INSTALL_BINARY_DIR)
+ 	cp ../plugins/* $(INSTALL_PLUGINS_DIR)
