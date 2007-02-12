@@ -1,5 +1,5 @@
 Summary:	LADSPA SDK example plugins
-Summary(pl):	Przyk³adowe wtyczki z LADSPA SDK
+Summary(pl.UTF-8):   PrzykÅ‚adowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.12
 Release:	4
@@ -24,32 +24,32 @@ against a range of host applications.
 
 This package contains the example plugins from the LADSPA SDK.
 
-%description -l pl
-Istnieje wiele pakietów do syntezy u¿ywanych lub rozwijanych na
+%description -l pl.UTF-8
+Istnieje wiele pakietÃ³w do syntezy uÅ¼ywanych lub rozwijanych na
 platformie linuksowej. LADSPA (Linux Audio Developer's Simple Plugin
-API - proste API wtyczek dla programistów d¼wiêku pod Linuksem) to
-próba udostêpnienia programistom mo¿liwo¶ci pisania prostych "wtyczek"
-procesorów d¼wiêku w C/C++ i ich dynamicznej konsolidacji z wieloma
+API - proste API wtyczek dla programistÃ³w dÅºwiÄ™ku pod Linuksem) to
+prÃ³ba udostÄ™pnienia programistom moÅ¼liwoÅ›ci pisania prostych "wtyczek"
+procesorÃ³w dÅºwiÄ™ku w C/C++ i ich dynamicznej konsolidacji z wieloma
 aplikacjami.
 
-Ten pakiet zawiera przyk³adowe wtyczki z LADSPA SDK.
+Ten pakiet zawiera przykÅ‚adowe wtyczki z LADSPA SDK.
 
 %package common
 Summary:	Common environment for LADSPA plugins
-Summary(pl):	¦rodowisko wspólne dla wtyczek LADSPA
+Summary(pl.UTF-8):   Åšrodowisko wspÃ³lne dla wtyczek LADSPA
 Group:		Libraries
 
 %description common
 Common environment for LADSPA plugins. Currently it contains only
 appropriate directory trees.
 
-%description common -l pl
-¦rodowisko wspólne dla wtyczek LADSPA. Aktualnie zawiera tylko
-odpowiednie drzewa katalogów.
+%description common -l pl.UTF-8
+Åšrodowisko wspÃ³lne dla wtyczek LADSPA. Aktualnie zawiera tylko
+odpowiednie drzewa katalogÃ³w.
 
 %package devel
 Summary:	Linux Audio Developer's Simple Plugin API
-Summary(pl):	Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
+Summary(pl.UTF-8):   Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
 Group:		Development/Libraries
 # doesn't require base or common
 
@@ -64,17 +64,17 @@ Definitive technical documentation on LADSPA plugins for both the host
 and plugin is contained within copious comments within the ladspa.h
 header file.
 
-%description devel -l pl
-Istnieje wiele pakietów do syntezy u¿ywanych lub rozwijanych na
+%description devel -l pl.UTF-8
+Istnieje wiele pakietÃ³w do syntezy uÅ¼ywanych lub rozwijanych na
 platformie linuksowej. LADSPA (Linux Audio Developer's Simple Plugin
-API - proste API wtyczek dla programistów d¼wiêku pod Linuksem) to
-próba udostêpnienia programistom mo¿liwo¶ci pisania prostych "wtyczek"
-procesorów d¼wiêku w C/C++ i ich dynamicznej konsolidacji z wieloma
+API - proste API wtyczek dla programistÃ³w dÅºwiÄ™ku pod Linuksem) to
+prÃ³ba udostÄ™pnienia programistom moÅ¼liwoÅ›ci pisania prostych "wtyczek"
+procesorÃ³w dÅºwiÄ™ku w C/C++ i ich dynamicznej konsolidacji z wieloma
 aplikacjami.
 
-Techniczna dokumentacja do wtyczek LADSPA dotycz±ca zarówno samych
-wtyczek jak i korzystania z nich w programach znajduje siê w
-komentarzach pliku nag³ówkowego ladspa.h.
+Techniczna dokumentacja do wtyczek LADSPA dotyczÄ…ca zarÃ³wno samych
+wtyczek jak i korzystania z nich w programach znajduje siÄ™ w
+komentarzach pliku nagÅ‚Ã³wkowego ladspa.h.
 
 %prep
 %setup -q -n %{name}_sdk
