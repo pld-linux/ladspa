@@ -1,5 +1,5 @@
 Summary:	LADSPA SDK example plugins
-Summary(pl.UTF-8):   Przykładowe wtyczki z LADSPA SDK
+Summary(pl.UTF-8):	Przykładowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.12
 Release:	4
@@ -36,7 +36,7 @@ Ten pakiet zawiera przykładowe wtyczki z LADSPA SDK.
 
 %package common
 Summary:	Common environment for LADSPA plugins
-Summary(pl.UTF-8):   Środowisko wspólne dla wtyczek LADSPA
+Summary(pl.UTF-8):	Środowisko wspólne dla wtyczek LADSPA
 Group:		Libraries
 
 %description common
@@ -49,7 +49,7 @@ odpowiednie drzewa katalogów.
 
 %package devel
 Summary:	Linux Audio Developer's Simple Plugin API
-Summary(pl.UTF-8):   Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
+Summary(pl.UTF-8):	Pakiet programistyczny LADSPA (Linux Audio Developer's Simple Plugin API)
 Group:		Development/Libraries
 # doesn't require base or common
 
