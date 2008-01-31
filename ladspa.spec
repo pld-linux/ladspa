@@ -2,7 +2,7 @@ Summary:	LADSPA SDK example plugins
 Summary(pl.UTF-8):	Przykładowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.12
-Release:	4
+Release:	5
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
