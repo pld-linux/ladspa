@@ -1,6 +1,6 @@
---- ladspa_sdk/src/makefile.wiget	Wed Feb  5 13:55:23 2003
-+++ ladspa_sdk/src/makefile	Wed Feb  5 13:56:19 2003
-@@ -28,6 +28,7 @@
+--- ladspa_sdk/src/makefile.orig	2007-11-06 11:42:45.000000000 +0100
++++ ladspa_sdk/src/makefile	2008-07-20 21:41:58.374043926 +0200
+@@ -27,6 +27,7 @@
  			../bin/listplugins
  CC		=	cc
  CPP		=	c++
@@ -8,12 +8,16 @@
  
  ###############################################################################
  #
-@@ -59,7 +60,7 @@
- 	play /tmp/test.wav
+@@ -59,9 +60,9 @@
+ 	@echo Test complete.
  
  install:	targets
--	-mkdirhier	$(INSTALL_PLUGINS_DIR)				\
-+	-$(MKDIRHIER)	$(INSTALL_PLUGINS_DIR)				\
- 			$(INSTALL_INCLUDE_DIR)				\
- 			$(INSTALL_BINARY_DIR)
+-	-mkdirhier $(INSTALL_PLUGINS_DIR)
+-	-mkdirhier $(INSTALL_INCLUDE_DIR)
+-	-mkdirhier $(INSTALL_BINARY_DIR)
++	-$(MKDIRHIER) $(INSTALL_PLUGINS_DIR)
++	-$(MKDIRHIER) $(INSTALL_INCLUDE_DIR)
++	-$(MKDIRHIER) $(INSTALL_BINARY_DIR)
  	cp ../plugins/* $(INSTALL_PLUGINS_DIR)
+ 	cp ladspa.h $(INSTALL_INCLUDE_DIR)
+ 	cp ../bin/* $(INSTALL_BINARY_DIR)
