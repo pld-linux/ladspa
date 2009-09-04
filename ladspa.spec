@@ -94,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/ladspa/rdf
 
 %{__make} -C src install \
-	MKDIRHIER=/usr/lib/rpm/mkinstalldirs \
+	MKDIRHIER="/usr/bin/install -d" \
 	INSTALL_PLUGINS_DIR=$RPM_BUILD_ROOT%{_libdir}/ladspa \
 	INSTALL_INCLUDE_DIR=$RPM_BUILD_ROOT%{_includedir} \
 	INSTALL_BINARY_DIR=$RPM_BUILD_ROOT%{_bindir}
