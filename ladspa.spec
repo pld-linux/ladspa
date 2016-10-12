@@ -2,7 +2,7 @@ Summary:	LADSPA SDK example plugins
 Summary(pl.UTF-8):	Przykładowe wtyczki z LADSPA SDK
 Name:		ladspa
 Version:	1.13
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
@@ -14,6 +14,8 @@ BuildRequires:	perl-base
 BuildRequires:	libstdc++-devel
 Requires:	%{name}-common = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_noautoprovfiles	%{_libdir}/ladspa
 
 %description
 There is a large number of synthesis packages in use or development on
