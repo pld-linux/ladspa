@@ -1,17 +1,15 @@
 Summary:	LADSPA SDK example plugins
 Summary(pl.UTF-8):	Przykładowe wtyczki z LADSPA SDK
 Name:		ladspa
-Version:	1.13
-Release:	4
+Version:	1.15
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
-# Source0-md5:	671be3e1021d0722cadc7fb27054628e
-Patch0:		%{name}-mkdirhier.patch
-Patch1:		%{name}-gcc4.patch
+# Source0-md5:	5824922ad4ae6aeb2910d302191e7afd
 URL:		http://www.ladspa.org/
-BuildRequires:	perl-base
 BuildRequires:	libstdc++-devel
+BuildRequires:	sed >= 4.0
 Requires:	%{name}-common = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -79,24 +77,22 @@ wtyczek jak i korzystania z nich w programach znajduje się w
 komentarzach pliku nagłówkowego ladspa.h.
 
 %prep
-%setup -q -n %{name}_sdk
-%patch0 -p1
-%patch1 -p1
-cd doc
-#fix links to the header file in the docs
-perl -pi -e "s!HREF=\"ladspa.h.txt\"!href=\"file:///usr/include/ladspa.h\"!" *.html
+%setup -q -n %{name}_sdk_%{version}
+
+%{__sed} -i -e 's!HREF="ladspa\.h\.txt"!HREF="file:///usr/include/ladpsa.h"!' doc/*.html
 
 %build
 %{__make} -C src targets \
-	CC="%{__cc}" CPP="%{__cxx}" \
-	CFLAGS="-I. -Wall -Werror %{rpmcflags} -fPIC"
+	CC="%{__cc}" \
+	CPP="%{__cxx}" \
+	CFLAGS="-I. -Wall -Werror %{rpmcflags} %{rpmcppflags} -fPIC -DDEFAULT_LADSPA_PATH=%{_libdir}/ladspa" \
+	CXXFLAGS="-I. -Wall -Werror %{rpmcxxflags} %{rpmcppflags} -fPIC -DDEFAULT_LADSPA_PATH=%{_libdir}/ladspa"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/ladspa/rdf
 
 %{__make} -C src install \
-	MKDIRHIER="/usr/bin/install -d" \
 	INSTALL_PLUGINS_DIR=$RPM_BUILD_ROOT%{_libdir}/ladspa \
 	INSTALL_INCLUDE_DIR=$RPM_BUILD_ROOT%{_includedir} \
 	INSTALL_BINARY_DIR=$RPM_BUILD_ROOT%{_bindir}
@@ -106,8 +102,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/ladspa/*.so
+%attr(755,root,root) %{_bindir}/analyseplugin
+%attr(755,root,root) %{_bindir}/applyplugin
+%attr(755,root,root) %{_bindir}/listplugins
+%attr(755,root,root) %{_libdir}/ladspa/amp.so
+%attr(755,root,root) %{_libdir}/ladspa/delay.so
+%attr(755,root,root) %{_libdir}/ladspa/filter.so
+%attr(755,root,root) %{_libdir}/ladspa/noise.so
+%attr(755,root,root) %{_libdir}/ladspa/sine.so
 
 %files common
 %defattr(644,root,root,755)
