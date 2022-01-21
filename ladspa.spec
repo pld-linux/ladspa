@@ -1,13 +1,14 @@
 Summary:	LADSPA SDK example plugins
 Summary(pl.UTF-8):	Przykładowe wtyczki z LADSPA SDK
 Name:		ladspa
-Version:	1.15
+Version:	1.17
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
-# Source0-md5:	5824922ad4ae6aeb2910d302191e7afd
+# Source0-md5:	59294cb5e0d3507667c52f5695b97197
 URL:		http://www.ladspa.org/
+BuildRequires:	libsndfile-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	sed >= 4.0
 Requires:	%{name}-common = %{version}-%{release}
@@ -83,6 +84,7 @@ komentarzach pliku nagłówkowego ladspa.h.
 
 %build
 %{__make} -C src targets \
+	BINFLAGS="%{rpmldflags} -fPIE -pie" \
 	CC="%{__cc}" \
 	CPP="%{__cxx}" \
 	CFLAGS="-I. -Wall -Werror %{rpmcflags} %{rpmcppflags} -fPIC -DDEFAULT_LADSPA_PATH=%{_libdir}/ladspa" \
